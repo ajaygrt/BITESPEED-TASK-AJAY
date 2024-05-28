@@ -1,13 +1,20 @@
-// pages/index.js
-import ChatbotFlowBuilder from './chatbotflowbuilder';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import { DndProvider } from 'react-dnd';
-export default function Home() {
+import React from "react";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import ChatbotFlowBuilder from "./chatbotflowbuilder";
+
+// Wrap your component tree with DndProvider
+const App = () => {
   return (
-    <DndProvider backend={HTML5Backend}>
-    <div className="flex min-h-screen flex-col items-center justify-center w-full">
-      <ChatbotFlowBuilder />
-    </div>
-    </DndProvider>
+    <React.StrictMode>
+      <DndProvider backend={HTML5Backend}>
+        <ChatbotFlowBuilder />
+      </DndProvider>
+    </React.StrictMode>
   );
-}
+};
+
+// Use createRoot to render the App component
+const root = document.getElementById("root");
+const rootElement = React.createRoot(root);
+rootElement.render(<App />);

@@ -20,10 +20,10 @@ const CustomNode = ({ data }) => {
       <Handle type="target" position="top" style={{ background: '#555' }} />
       <div style={{ fontWeight: 'bold', marginBottom: 5, background:'#c8ffc8', padding:'5px', display:'flex', gap:'10px', justifyContent:'space-between' }}>
         <div className="flex gap-2">
-          <img src="./chat.png" className="w-[25px]"/>
+        <img src="./chat.png" alt="Chat icon" className="w-[25px]" />
           Send Message
         </div>
-        <img src="./whatsapp.svg" className="w-[25px]"/>
+        <img src="./whatsapp.svg" alt="WhatsApp icon" className="w-[25px]" />
       </div>
       <div className="p-3">{data.label}</div>
       <Handle type="source" position="bottom" style={{ background: '#555' }} />
@@ -288,7 +288,7 @@ const handleSaveChanges = () => {
   }} 
   className="self-center flex flex-col gap-2 items-center justify-center border-blue-500 border text-blue-500 w-[150px] min-h-[80px] text-sm"
 >
-  <img src="./chat.png" className="w-[20px]"/>
+<img src="./chat.png" alt="Chat icon" className="w-[25px]" />
   Message
 </button>
             </div>
