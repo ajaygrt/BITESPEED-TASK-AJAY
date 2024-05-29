@@ -12,6 +12,7 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { useDrag, useDrop } from 'react-dnd';
+import { createRoot } from 'react-dom/client';
 
 // Custom node component for rendering nodes in the flow
 const CustomNode = ({ data }) => {
@@ -128,8 +129,16 @@ const ChatbotFlowBuilder = () => {
 
   // Callback to add a new edge
   const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
+    (params) => {
+      const existingSourceEdge = edges.find(edge => edge.source === params.source);
+      if (existingSourceEdge) {
+        // Notify user that the source node already has an outgoing edge
+        alert('A source node can only have one outgoing edge.');
+        return;
+      }
+      setEdges((eds) => addEdge(params, eds));
+    },
+    [edges]
   );
 
    // Delete a selected node and its connected edges
